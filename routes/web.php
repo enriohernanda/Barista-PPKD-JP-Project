@@ -10,6 +10,13 @@ Route::get('logout', [\App\Http\Controllers\LoginController::class, 'logout'])->
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('dashboard', \App\Http\Controllers\DashboardController::class);
+    // Route::get('user', [\App\Http\Controllers\UserController::class, 'index'])->name('user.index');
+    // Route::get('user/create', [\App\Http\Controllers\UserController::class, 'create'])->name('user.create');
+    // Route::post('user/store', [\App\Http\Controllers\UserController::class, 'store'])->name('user.store');
+    // Route::get('user/edit/{id}', [\App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
+    // Route::put('user/update/{id}', [\App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+    // Route::delete('user/destroy/{id}', [\App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
+    Route::resource('user', \App\Http\Controllers\UserController::class);
 });
 
 Route::get('belajar', [\App\Http\Controllers\BelajarController::class, 'index']);
