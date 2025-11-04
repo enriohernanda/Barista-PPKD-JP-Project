@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+@section('title', 'Data User')
 {{-- @dd($users) --}}
 <div class="d-flex justify-content-end my-2">
     <a href="{{ route('user.create') }}" class="btn btn-primary">ADD <i class="bi bi-plus-circle"></i></a>
