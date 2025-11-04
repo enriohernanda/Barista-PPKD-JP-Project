@@ -17,6 +17,8 @@ Route::middleware(['auth'])->group(function () {
     // Route::put('user/update/{id}', [\App\Http\Controllers\UserController::class, 'update'])->name('user.update');
     // Route::delete('user/destroy/{id}', [\App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
     Route::resource('user', \App\Http\Controllers\UserController::class);
+    Route::resource('category', \App\Http\Controllers\CategoriesController::class);
+    Route::resource('role', \App\Http\Controllers\RoleController::class);
 });
 
 Route::get('belajar', [\App\Http\Controllers\BelajarController::class, 'index']);
