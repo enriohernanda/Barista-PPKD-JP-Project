@@ -67,7 +67,7 @@
         // // btn[1].style.color = "black";
         // // btn[2].style.color = "brown";
         // console.log("ini button", btn);
-        
+
 //         let buttons = document.querySelectorAll(".category-btn");
 //         // buttons.forEach(function (btn){});
 //         buttons.forEach((btn) => {
@@ -85,9 +85,10 @@
 //         p.textContent = "Nuall jadi";
 //         // menambahkan element didalam card
 //         card.appendChild(h3);
-//         card.appendChild(p); 
+//         card.appendChild(p);
 
 let currentCategory = "all";
+let products = [];
 
 function filterCategory(category, event) {
   currentCategory = category;
@@ -110,9 +111,13 @@ function filterCategory(category, event) {
   renderProducts();
 }
 
-function renderProducts(searchProduct = "") {
+async function renderProducts(searchProduct = "") {
   const productGrid = document.getElementById("productGrid");
   productGrid.innerHTML = "";
+
+  const response = await fetch("/get-products");
+  products = await response.json();
+
 
   //filter
   const filtered = products.filter((p) => {
@@ -129,7 +134,7 @@ function renderProducts(searchProduct = "") {
     col.className = "col-md-4 col-sm-6";
     col.innerHTML = `<div class="card product-card" onclick="addToCart(${product.id})">
       <div class="product-img">
-        <img src="../${product.product_photo}" width="100%">
+        <img src="/storage/${product.product_photo}" width="100%">
       </div>
       <div class="card-body">
         <span class="badge bg-secondary badge-category">${product.category_name}</span>
@@ -227,7 +232,7 @@ function updateTotal() {
     // console.log(total);
 }
 
-document.getElementById("clearCart").addEventListener("click", 
+document.getElementById("clearCart").addEventListener("click",
     function() {
         cart = [];
         renderCart();
@@ -255,10 +260,10 @@ async function processPayment() {
         }else{
           alert("Transaction Failed", data.message);
         }
-        
+
     } catch (error) {
         alert("Upss Transaction failed!")
-        console.log("error", error); 
+        console.log("error", error);
         die;
     }
 }
