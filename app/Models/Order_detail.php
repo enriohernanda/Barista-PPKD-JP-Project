@@ -13,4 +13,6 @@ class Order_detail extends Model
         'order_price',
         'order_subtotal'
     ];
+
+    protected $table = "orders_details";
 }
