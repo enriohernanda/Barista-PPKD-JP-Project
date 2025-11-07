@@ -22,7 +22,9 @@
         <td><img src="{{ asset('storage/' . $data->product_photo) }}" alt="{{ $data->product_name }}" width="100"></td>
         <td>{{ $data->product_name }}</td>
         <td>{{ $data->product_price }}</td>
-        <td>{{ $data->is_active }}</td>
+        <td>
+            <span class="{{ $data->is_active_class }}">{{ $data->is_active_text }}</span>
+        </td>
         <td>
             <a href="{{ route('product.edit', $data->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i></a>
             <form action="{{ route('product.destroy', $data->id) }}" class="d-inline" method="post" onsubmit="return confirm('Are you sure want to delete?')">
